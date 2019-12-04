@@ -1,0 +1,7 @@
+﻿  Omok.cpp
+D:\_git\ngp\OmokServer\Omok.cpp(62): warning C4700: 초기화되지 않은 'x' 지역 변수를 사용했습니다.
+D:\_git\ngp\OmokServer\Omok.cpp(62): warning C4700: 초기화되지 않은 'y' 지역 변수를 사용했습니다.
+OmokServer.obj : error LNK2019: "void __cdecl err_quit(char const *)" (?err_quit@@YAXPBD@Z) 외부 기호(참조 위치: "private: bool __thiscall OmokServer::apply_sock_opt(void)" (?apply_sock_opt@OmokServer@@AAE_NXZ) 함수)에서 확인하지 못했습니다.
+OmokServer.obj : error LNK2019: "void __cdecl err_display(char const *)" (?err_display@@YAXPBD@Z) 외부 기호(참조 위치: "public: bool __thiscall OmokServer::init(void)" (?init@OmokServer@@QAE_NXZ) 함수)에서 확인하지 못했습니다.
+MSVCRTD.lib(exe_wwinmain.obj) : error LNK2019: _wWinMain@16 외부 기호(참조 위치: "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ) 함수)에서 확인하지 못했습니다.
+D:\_git\ngp\OmokServer\Debug\OmokServer.exe : fatal error LNK1120: 3개의 확인할 수 없는 외부 참조입니다.
