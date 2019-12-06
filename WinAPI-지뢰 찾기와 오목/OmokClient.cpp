@@ -126,6 +126,8 @@ void OmokClient::disconnect()
 	closesocket(this->sock);
 }
 
+
+// non-blocking 
 void OmokClient::connect()
 {
 	this->get_ip();
@@ -151,7 +153,6 @@ void OmokClient::connect()
 		{
 			if (WSAEWOULDBLOCK == err_code)
 			{
-				//printf("아 우드 블락? ㅋㅋ? : %d", err_code);
 				err_display("OmokClient::init() connect() failure");
 				//this->client_last_error = static_cast<size_t>(ErrorCode::LISTEN_SOCKET_CREATION_FAIL);
 				//continue;
@@ -174,7 +175,7 @@ void OmokClient::connect()
 		}
 
 	}
-	printf("연결됨와;;");
+	printf("연결 완료\n");
 }
 
 void OmokClient::requset_to_drop_stone(int x, int y, OmokStatus type)
@@ -237,43 +238,14 @@ void OmokClient::parse_packet()
 }
 
 
-void OmokClient::process_packet(PacketHeader* header)
-{
-	switch (header->type)
-	{
-	case PT_SC_ASSIGN_STONE:
-		(Packet*)header;
-		//game->SetOmokStone();
-		break;
 
-	default:
-		this->last_error = 0x1234;
-		c2::util::crash();
-		break;
-	}
-}
 
+// 들어온 패킷 타입에 따라 
 void OmokClient::process_packet(PacketHeader* header, Packet* packet)
 {
 	switch (header->type)
 	{
-		case PT_SC_NOTIFY_KICK:
-		{
-			PacketHeader	header;
-			
-			packet->read(&header, sizeof(header));
-
-			printf("\n[서버 공지] 접속할 자리가 없다\n");
-
-			Packet* out_packet = new Packet; // 응답은 해야 예의임. 유사 3way hand shaking
-			header.type = PT_CS_NOTIFY_KICK;
-			out_packet->write(&header, sizeof(header));
-			pre_send(out_packet);
-
-			break;
-		}
-
-		case PT_SC_ASSIGN_STONE:
+		case PT_SC_ASSIGN_STONE:	// 서버로 부터 돌을 할당 받음.
 		{
 			PacketHeader header;
 			OmokStatus stone_type;
@@ -289,6 +261,35 @@ void OmokClient::process_packet(PacketHeader* header, Packet* packet)
 
 
 			game->SetMyOmokStone(stone_type);
+
+			break;
+		}
+		case PT_SC_NOTIFY_KICK:	// 응답을 해야 서버에서 내가 메시지를 받았는지 확인 가능.. 유사 3way hand shaking
+		{
+			PacketHeader	header;
+			
+			packet->read(&header, sizeof(header));
+
+			printf("\n[서버 공지] 접속할 자리가 없다\n");
+
+			Packet* out_packet = new Packet; 
+			
+			header.type = PT_CS_NOTIFY_KICK;
+			out_packet->write(&header, sizeof(header));
+			pre_send(out_packet);
+
+			delete out_packet;
+			break;
+		}
+		case PT_SC_NOTIFY_SERVER_TIME:	// 
+		{
+			PacketHeader	header;
+			size_t			time_tick;
+
+			packet->read(&header, sizeof(header));
+			packet->read(&time_tick, sizeof(size_t));
+
+			this->game->SetTimeTick(time_tick);
 
 			break;
 		}
@@ -326,18 +327,6 @@ void OmokClient::process_packet(PacketHeader* header, Packet* packet)
 			break;
 		}
 
-		case PT_SC_NOTIFY_SERVER_TIME:
-		{
-			PacketHeader	header;
-			size_t			time_tick;
-
-			packet->read(&header, sizeof(header));
-			packet->read(&time_tick, sizeof(size_t));
-
-			this->game->SetTimeTick(time_tick);
-
-			break;
-		}
 
 
 		default:
@@ -347,6 +336,8 @@ void OmokClient::process_packet(PacketHeader* header, Packet* packet)
 	}
 }
 
+// Socket 옵션 적용.
+// PPT에 있는 예제를 참고하여 소켓에 옵션을 적용해 보았다.
 void OmokClient::apply_sockopt()
 {
 	// nagle opt
@@ -377,5 +368,20 @@ void OmokClient::apply_sockopt()
 		(char*)&bEnable, sizeof(bEnable));
 	if (retval == SOCKET_ERROR) 
 	err_quit("setsockopt()");
-	
+}
+// 
+void OmokClient::process_packet(PacketHeader* header)
+{
+	switch (header->type)
+	{
+	case PT_SC_ASSIGN_STONE:
+		(Packet*)header;
+		//game->SetOmokStone();
+		break;
+
+	default:
+		this->last_error = 0x1234;
+		c2::util::crash();
+		break;
+	}
 }

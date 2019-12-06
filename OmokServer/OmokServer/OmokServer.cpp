@@ -191,7 +191,7 @@ void OmokServer::update_network()
 			// 소켓 정보 추가
 			AddSocketInfo(client_sock);
 			// 세션 정보 추가.
-			insertSession(SocketInfoArray[nTotalSockets-1]);
+			insert_session(SocketInfoArray[nTotalSockets-1]);
 			process_accpet(SocketInfoArray[nTotalSockets - 1]);
 		}
 	}
@@ -216,7 +216,7 @@ void OmokServer::update_network()
 				err_display("recv()");
 				RemoveSocketInfo(i);
 				
-				removeSession(ptr);
+				remove_session(ptr);
 				
 				continue;
 			}
@@ -227,7 +227,7 @@ void OmokServer::update_network()
 
 				RemoveSocketInfo(i);
 				
-				removeSession(ptr);
+				remove_session(ptr);
 
 				continue;
 			}
@@ -273,7 +273,7 @@ void OmokServer::update_network()
 	//}
 }
 
-void OmokServer::insertSession(SOCKETINFO* sock_info)
+void OmokServer::insert_session(SOCKETINFO* sock_info)
 {
 	Session* new_session = new Session;
 	new_session->sock_info = sock_info;
@@ -281,7 +281,7 @@ void OmokServer::insertSession(SOCKETINFO* sock_info)
 	this->session_map.insert(std::pair<SOCKETINFO*, Session*>(sock_info, new_session));
 }
 
-void OmokServer::removeSession(SOCKETINFO* sock_info)
+void OmokServer::remove_session(SOCKETINFO* sock_info)
 {
 	this->session_map.erase(sock_info);
 }
@@ -307,7 +307,7 @@ size_t OmokServer::get_timer_tick()
 	return this->time_tick;
 }
 
-void OmokServer::makePacketGameResult(Packet* packet)
+void OmokServer::make_packet_game_result(Packet* packet)
 {
 	PacketHeader header;
 
@@ -322,7 +322,7 @@ void OmokServer::makePacketGameResult(Packet* packet)
 	packet->write(&time_tick, sizeof(time_tick));
 }
 
-void OmokServer::makePacketGameServerTime(Packet* packet)
+void OmokServer::make_packet_game_server_time(Packet* packet)
 {
 	PacketHeader header;
 
@@ -351,7 +351,7 @@ void OmokServer::update()
 		if ( 0 < this->timer_event )
 		{
 			Packet* out_packet = new Packet;
-			this->makePacketGameResult(out_packet);
+			this->make_packet_game_server_time(out_packet);
 			this->broadcast(out_packet);
 			delete out_packet;
 
@@ -362,7 +362,7 @@ void OmokServer::update()
 		if (true == this->get_game()->IsGameover())
 		{
 			Packet* out_packet = new Packet;
-			this->makePacketGameResult(out_packet);
+			this->make_packet_game_result(out_packet);
 			this->broadcast(out_packet);
 			this->omok->Init();
 			delete out_packet;
@@ -442,23 +442,23 @@ void OmokServer::requestGameStart(Session* session)
 
 }
 
-DWORD __stdcall OmokServer::timer_thread_func(LPVOID param)
+
+DWORD __stdcall OmokServer::timer_thread_func(LPVOID param)// spsc
 {
-	/*size_t* shraed_timer_tick = (size_t*)param;*/
 	OmokServer* server	= reinterpret_cast<OmokServer*>(param);
 	Omok*		game	= reinterpret_cast<Omok*>(param);
 
 	size_t start_time_tick = GetTickCount64();
 	size_t elapsed_time = 0;
+
 	for (;;)
 	{
-		if (true == game->IsGameover())
+		if (true == game->IsGameover()) // 게임이 종료 된다면 업데이트 중지.
 			break;
 
 		Sleep( 500 );
 		
 		//*shraed_timer_tick 
-		// 총 지난 시간을 얻고 
 		server->time_tick = GetTickCount64() - start_time_tick;
 		if ( 1000 >= server->time_tick - elapsed_time  ) // 1초가지난다면 
 		{
@@ -471,11 +471,12 @@ DWORD __stdcall OmokServer::timer_thread_func(LPVOID param)
 	return 0;
 }
 
+// 들어온 유저를 안내사항과 함께 안전하게 끊어준다.
 DWORD __stdcall OmokServer::kick_thread_func(LPVOID param)
 {
-	SOCKET client_sock = reinterpret_cast<SOCKET>(param);
+	SOCKET client_sock = reinterpret_cast<SOCKET>(param); 
 	
-	Packet* kick_packet = new Packet;
+	Packet*		 kick_packet = new Packet;
 	PacketHeader header;
 
 	header.type		= PT_SC_NOTIFY_KICK;

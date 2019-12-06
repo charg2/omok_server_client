@@ -35,8 +35,8 @@ public:
 	std::unique_ptr<Omok>& get_game();
 
 	size_t get_timer_tick();
-	void makePacketGameResult(Packet* packet);
-	void makePacketGameServerTime(Packet* packet);
+	void make_packet_game_result(Packet* packet);
+	void make_packet_game_server_time(Packet* packet);
 //{
 //	PacketHeader header;
 //
@@ -50,15 +50,13 @@ public:
 //}
 
 private:
-	// timer 또는 출력용?
 	static DWORD WINAPI timer_thread_func(LPVOID param);
 	static DWORD WINAPI kick_thread_func(LPVOID param);
 	bool apply_sock_opt();
 	void update_network();
-	void insertSession(SOCKETINFO*);
-	void removeSession(SOCKETINFO*);
+	void insert_session(SOCKETINFO*);
+	void remove_session(SOCKETINFO*);
 	void process_accpet(SOCKETINFO*);
-
 
 private:
 	enum
@@ -66,18 +64,17 @@ private:
 		MAX_KICK_THREAD = 256
 	};
 private:
-
-	int			nTotalSockets;
+	int			nTotalSockets;				
 	SOCKETINFO* SocketInfoArray[FD_SETSIZE];
+
+	SOCKET listen_sock;
+	const int max_connection_count;
 
 	HANDLE timer_thread;
 
 	HANDLE kick_threads[MAX_KICK_THREAD];
 	size_t kick_thread_index;
 
-	SOCKET listen_sock;
-
-	const int max_connection_count;
 	std::unique_ptr<Omok> omok;
 
 	size_t server_last_error;
