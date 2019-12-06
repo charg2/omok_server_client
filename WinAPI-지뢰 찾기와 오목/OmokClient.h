@@ -8,6 +8,8 @@ public:
 	OmokClient();
 	~OmokClient();
 
+	void get_ip();
+
 	bool init();
 	void update();
 	void fin();
@@ -47,5 +49,7 @@ private:
 
 	size_t					last_error;
 	OmokScene*				game;
+
+	std::string				ip;
 };
 

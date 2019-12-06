@@ -1,3 +1,4 @@
+
 #include "stdafx.h"
 #include "../Common/protocol.h"
 #include "OmokClient.h"
@@ -15,7 +16,15 @@ OmokClient::~OmokClient()
 	delete this->recv_buffer;
 	delete this->send_buffer;
 	delete this->inner_packet;
+}
 
+void OmokClient::get_ip()
+{
+	std::cout << "ip를 입력 해주세용 : " << std::endl;
+
+	ip.clear();
+
+	std::cin >> this->ip;
 }
 
 bool OmokClient::init()
@@ -119,13 +128,16 @@ void OmokClient::disconnect()
 
 void OmokClient::connect()
 {
+	this->get_ip();
+
 	int retval;
 	
 	// connect()
 	SOCKADDR_IN serveraddr;
 	ZeroMemory(&serveraddr, sizeof(serveraddr));
 	serveraddr.sin_family = AF_INET;
-	serveraddr.sin_addr.s_addr =  inet_addr(SERVERIP);
+	//serveraddr.sin_addr.s_addr = inet_addr(SERVERIP);
+	serveraddr.sin_addr.s_addr =  inet_addr(ip.c_str());
 	serveraddr.sin_port = htons(TCP_SERVERPORT);
 
 	for (;;)

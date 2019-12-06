@@ -1,24 +1,24 @@
 ﻿  OmokClient.cpp
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(23,20): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(23,20): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(23,30): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(23,30): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(46,16): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(46,16): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(46,31): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(46,31): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(47,5): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(47,5): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(47,20): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(47,20): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\Image.h(149,31): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\Image.h(149,15): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\Image.h(159,31): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\Image.h(159,15): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\OmokClient.cpp(61,126): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\OmokClient.cpp(91,109): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\OmokClient.cpp(150,12): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'size_t'입니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\OmokClient.cpp(150,12): message : 서식 문자열에서 '%zd'을(를) 사용하는 것이 좋습니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\OmokClient.cpp(155,12): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'size_t'입니다.
-D:\_git\ngp\WinAPI-지뢰 찾기와 오목\OmokClient.cpp(155,12): message : 서식 문자열에서 '%zd'을(를) 사용하는 것이 좋습니다.
-  WinAPI-지뢰 찾기와 오목.vcxproj -> D:\_git\ngp\WinAPI-지뢰 찾기와 오목\x64\Debug\WinAPI-지뢰 찾기와 오목.exe
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(23,20): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(23,20): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(23,30): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(23,30): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(46,16): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(46,16): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(46,31): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(46,31): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(47,5): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(47,5): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(47,20): warning C4838: 'float'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\CommonMacroFunction.h(47,20): warning C4244: '초기화 중': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\Image.h(149,31): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\Image.h(149,15): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\Image.h(159,31): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\Image.h(159,15): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\OmokClient.cpp(70,126): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\OmokClient.cpp(100,109): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\OmokClient.cpp(162,12): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'size_t'입니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\OmokClient.cpp(162,12): message : 서식 문자열에서 '%zd'을(를) 사용하는 것이 좋습니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\OmokClient.cpp(167,12): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'size_t'입니다.
+C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\OmokClient.cpp(167,12): message : 서식 문자열에서 '%zd'을(를) 사용하는 것이 좋습니다.
+  WinAPI-지뢰 찾기와 오목.vcxproj -> C:\Users\CHARG2DANG\Downloads\ForNgp-master\ForNgp-master\WinAPI-지뢰 찾기와 오목\x64\Debug\WinAPI-지뢰 찾기와 오목.exe
