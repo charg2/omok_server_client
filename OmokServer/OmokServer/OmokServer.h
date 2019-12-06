@@ -51,7 +51,7 @@ public:
 
 private:
 	// timer 또는 출력용?
-	static DWORD WINAPI tiemr_thread_func(LPVOID param);
+	static DWORD WINAPI timer_thread_func(LPVOID param);
 	static DWORD WINAPI kick_thread_func(LPVOID param);
 	bool apply_sock_opt();
 	void update_network();

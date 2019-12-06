@@ -21,7 +21,7 @@ OmokServer::~OmokServer()
 
 bool OmokServer::init()
 {
-	this->timer_thread = CreateThread(NULL, 0, tiemr_thread_func, this,  0, NULL);
+	this->timer_thread = CreateThread(NULL, 0, timer_thread_func, this,  0, NULL);
 
 	this->omok->Init();
 
@@ -105,8 +105,6 @@ bool OmokServer::apply_sock_opt()
 	// nagle opt
 	BOOL optval = TRUE; // Nagle 알고리즘 중지
 	int retval = setsockopt(this->listen_sock, IPPROTO_TCP, TCP_NODELAY, (char*)&optval, sizeof(optval));
-	
-
 	if (retval == SOCKET_ERROR)
 		err_quit("setsockopt()");
 
@@ -125,10 +123,6 @@ bool OmokServer::apply_sock_opt()
 
 void OmokServer::update_network()
 {
-	//while (false == omok->is_gameover()) // 게임이 종료 되지 않았으면 근야 처리함.
-//{}
-//for (;;)
-//{
 // network update
 	int retval;
 	FD_SET rset, wset;
@@ -142,7 +136,6 @@ void OmokServer::update_network()
 	FD_SET(this->listen_sock, &rset);
 
 	// 접속한 소켓이 하나라도 있으면 
-	// 
 	//for (i = 0; i < nTotalSockets; i++)
 	//{
 	//	if (SocketInfoArray[i]->recvbytes > SocketInfoArray[i]->sendbytes)
@@ -449,7 +442,7 @@ void OmokServer::requestGameStart(Session* session)
 
 }
 
-DWORD __stdcall OmokServer::tiemr_thread_func(LPVOID param)
+DWORD __stdcall OmokServer::timer_thread_func(LPVOID param)
 {
 	/*size_t* shraed_timer_tick = (size_t*)param;*/
 	OmokServer* server	= reinterpret_cast<OmokServer*>(param);
