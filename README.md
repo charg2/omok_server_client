@@ -1,2 +1,11 @@
-# ForNgp
- NGP 제출용
+# network game programming termproject
+ 
+server 
+socket, select, multithread
+
+client
+winapi, socket 
+
+
+
+
